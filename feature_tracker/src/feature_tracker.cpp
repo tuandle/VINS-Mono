@@ -27,11 +27,12 @@ void reduceVector(vector<int> &v, vector<uchar> status) {
 FeatureTracker::FeatureTracker() {}
 
 void FeatureTracker::setMask() {
+  /*cout << "enter setMask function, var fisheye_mask size  "<< fisheye_mask.size();*/
   if (FISHEYE)
     mask = fisheye_mask.clone();
   else
     mask = cv::Mat(ROW, COL, CV_8UC1, cv::Scalar(255));
-
+  /*cout << "fisheye_mask " << fisheye_mask.size() << std::endl; */
   // prefer to keep features that are tracked for long time
   vector<pair<int, pair<cv::Point2f, int>>> cnt_pts_id;
 
@@ -71,6 +72,7 @@ void FeatureTracker::readImage(const cv::Mat &_img, double _cur_time) {
   cv::Mat img;
   TicToc t_r;
   cur_time = _cur_time;
+  //cout <<"enter read function with size " << _img.size() << std::endl;
 
   if (EQUALIZE) {
     cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE(3.0, cv::Size(8, 8));
@@ -122,6 +124,7 @@ void FeatureTracker::readImage(const cv::Mat &_img, double _cur_time) {
       if (mask.empty()) cout << "mask is empty " << endl;
       if (mask.type() != CV_8UC1) cout << "mask type wrong " << endl;
       if (mask.size() != forw_img.size()) cout << "wrong size " << endl;
+      cout << "Size of n_pts: " << n_pts.size() << endl;
       cv::goodFeaturesToTrack(forw_img, n_pts, MAX_CNT - forw_pts.size(), 0.01,
                               MIN_DIST, mask);
     } else
@@ -233,6 +236,7 @@ void FeatureTracker::undistortedPoints() {
   for (unsigned int i = 0; i < cur_pts.size(); i++) {
     Eigen::Vector2d a(cur_pts[i].x, cur_pts[i].y);
     Eigen::Vector3d b;
+    // Lift points from the image plane to the projective space.
     m_camera->liftProjective(a, b);
     cur_un_pts.push_back(cv::Point2f(b.x() / b.z(), b.y() / b.z()));
     cur_un_pts_map.insert(

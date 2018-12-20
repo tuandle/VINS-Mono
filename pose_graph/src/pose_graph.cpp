@@ -122,7 +122,7 @@ void PoseGraph::addKeyFrame(KeyFrame* cur_kf, bool flag_detect_loop) {
   Quaterniond Q{R};
   geometry_msgs::PoseStamped pose_stamped;
   pose_stamped.header.stamp = ros::Time(cur_kf->time_stamp);
-  pose_stamped.header.frame_id = "world";
+  pose_stamped.header.frame_id = "map"; // change for r_l
   pose_stamped.pose.position.x = P.x() + VISUALIZATION_SHIFT_X;
   pose_stamped.pose.position.y = P.y() + VISUALIZATION_SHIFT_Y;
   pose_stamped.pose.position.z = P.z();
@@ -210,7 +210,7 @@ void PoseGraph::loadKeyFrame(KeyFrame* cur_kf, bool flag_detect_loop) {
   Quaterniond Q{R};
   geometry_msgs::PoseStamped pose_stamped;
   pose_stamped.header.stamp = ros::Time(cur_kf->time_stamp);
-  pose_stamped.header.frame_id = "world";
+  pose_stamped.header.frame_id = "map"; // change for r_l
   pose_stamped.pose.position.x = P.x() + VISUALIZATION_SHIFT_X;
   pose_stamped.pose.position.y = P.y() + VISUALIZATION_SHIFT_Y;
   pose_stamped.pose.position.z = P.z();
@@ -551,7 +551,7 @@ void PoseGraph::updatePath() {
 
     geometry_msgs::PoseStamped pose_stamped;
     pose_stamped.header.stamp = ros::Time((*it)->time_stamp);
-    pose_stamped.header.frame_id = "world";
+    pose_stamped.header.frame_id = "map"; // change for r_l
     pose_stamped.pose.position.x = P.x() + VISUALIZATION_SHIFT_X;
     pose_stamped.pose.position.y = P.y() + VISUALIZATION_SHIFT_Y;
     pose_stamped.pose.position.z = P.z();

@@ -218,7 +218,7 @@ void vio_callback(const nav_msgs::Odometry::ConstPtr &pose_msg) {
 
   visualization_msgs::Marker key_odometrys;
   key_odometrys.header = pose_msg->header;
-  key_odometrys.header.frame_id = "world";
+  key_odometrys.header.frame_id = "map"; // change to map for r_l
   key_odometrys.ns = "key_odometrys";
   key_odometrys.type = visualization_msgs::Marker::SPHERE_LIST;
   key_odometrys.action = visualization_msgs::Marker::ADD;
@@ -249,12 +249,12 @@ void vio_callback(const nav_msgs::Odometry::ConstPtr &pose_msg) {
   if (!LOOP_CLOSURE) {
     geometry_msgs::PoseStamped pose_stamped;
     pose_stamped.header = pose_msg->header;
-    pose_stamped.header.frame_id = "world";
+    pose_stamped.header.frame_id = "map"; // change to map for r_l
     pose_stamped.pose.position.x = vio_t.x();
     pose_stamped.pose.position.y = vio_t.y();
     pose_stamped.pose.position.z = vio_t.z();
     no_loop_path.header = pose_msg->header;
-    no_loop_path.header.frame_id = "world";
+    no_loop_path.header.frame_id = "map"; // // change to map for r_l
     no_loop_path.poses.push_back(pose_stamped);
     pub_vio_path.publish(no_loop_path);
   }

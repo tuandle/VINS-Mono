@@ -11,15 +11,15 @@ camera_name: camera
 image_width: 640
 image_height: 480
 mirror_parameters:
-   xi: 1.721007368935798
+   xi: 2.9364486974776973
 distortion_parameters:
-   k1: -0.016960374588433115
-   k2: 0.05390327303388012
-   p1: -0.044586141819421526
-   p2: 0.01234826101809194
+   k1: 0.6404639141825778
+   k2: 6.1785377532595485
+   p1: -0.0040462169943965625
+   p2: 0.0002599402098400286
 projection_parameters:
-   gamma1: 206.76398367886839
-   gamma2: 206.06906162158003
+   gamma1: 1084.57909045 #206.76398367886839 #eta: 5.2454932970075046
+   gamma2: 1080.93388146 #206.06906162158003
    u0: 311.94203730635763
    v0: 245.9240905047199
 
@@ -45,8 +45,8 @@ extrinsicTranslation: !!opencv-matrix
 
 #feature traker paprameters
 max_cnt: 100            # max feature number in feature tracking
-min_dist: 30            # min distance between two features 
-freq: 10                # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image 
+min_dist: 20            # min distance between two features 
+freq: 20                # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image 
 F_threshold: 1.0        # ransac threshold (pixel)
 show_track: 1           # publish tracking image as topic
 equalize: 1             # if image is too dark or light, trun on equalize to find enough features
@@ -61,7 +61,7 @@ keyframe_parallax: 10.0 # keyframe selection threshold (pixel)
 acc_n: 000.027052931930236323         # accelerometer measurement noise standard deviation. #0.2
 gyr_n: 1.1186830841306218e-03         # gyroscope measurement noise standard deviation.     #0.05
 acc_w: 1.3054568211204843e-03         # accelerometer bias random work noise standard deviation.  #0.02
-gyr_w: 8.997530210630026e-06       # gyroscope bias random work noise standard deviation.     #4.0e-5
+gyr_w: 8.997530210630026e-05       # gyroscope bias random work noise standard deviation.     #4.0e-5
 g_norm: 9.75770672       # gravity magnitude
 
 #loop closure parameters
@@ -71,8 +71,8 @@ load_previous_pose_graph: 0        # load and reuse previous pose graph; load fr
 pose_graph_save_path: "/home/tuan/vision_ws/src/VINS-Mono/output/pose_graph/" # save and load path
 
 #unsynchronization parameters
-estimate_td: 0                      # online estimate time offset between camera and imu
-td: 0.00169816798755           # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
+estimate_td: 1                      # online estimate time offset between camera and imu
+td: 0.003 #0.006575 #0.006901           # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
 
 #rolling shutter parameters
 rolling_shutter: 0                  # 0: global shutter camera, 1: rolling shutter camera

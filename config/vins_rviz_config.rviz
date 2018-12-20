@@ -4,10 +4,21 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /Global Options1
         - /Status1
+        - /Axes1
         - /VIO1
-        - /pose_graph1
+        - /VIO1/Path1
+        - /VIO1/current_point1
+        - /VIO1/TF1
+        - /VIO1/TF1/Frames1
+        - /pose_graph1/pose_graph_path1
         - /pose_graph1/base_path1
+        - /pose_graph1/Sequence11
+        - /pose_graph1/no_loop_path1
+        - /Odometry1
+        - /Odometry2
+        - /Odometry2/Shape1
       Splitter Ratio: 0.465115994
     Tree Height: 408
   - Class: rviz/Selection
@@ -28,7 +39,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: tracked image
+    SyncSource: ""
   - Class: rviz/Displays
     Help Height: 78
     Name: Displays
@@ -58,12 +69,12 @@ Visualization Manager:
       Reference Frame: <Fixed Frame>
       Value: true
     - Class: rviz/Axes
-      Enabled: true
-      Length: 1
+      Enabled: false
+      Length: 0.100000001
       Name: Axes
-      Radius: 0.100000001
+      Radius: 0.00999999978
       Reference Frame: <Fixed Frame>
-      Value: true
+      Value: false
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
@@ -141,20 +152,20 @@ Visualization Manager:
           Marker Topic: /vins_estimator/camera_pose_visual
           Name: camera_visual
           Namespaces:
-            CameraPoseVisualization: true
+            {}
           Queue Size: 100
           Value: true
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
-            Max Value: 10
-            Min Value: -10
+            Max Value: 731.065125
+            Min Value: 5.00758028
             Value: true
-          Axis: Z
+          Axis: Y
           Channel Name: intensity
           Class: rviz/PointCloud
           Color: 0; 255; 0
-          Color Transformer: FlatColor
+          Color Transformer: AxisColor
           Decay Time: 0
           Enabled: true
           Invert Rainbow: false
@@ -209,22 +220,13 @@ Visualization Manager:
           Frame Timeout: 15
           Frames:
             All Enabled: true
-            body:
-              Value: true
-            camera:
-              Value: true
-            world:
-              Value: true
           Marker Scale: 1
           Name: TF
           Show Arrows: true
           Show Axes: true
           Show Names: true
           Tree:
-            world:
-              body:
-                camera:
-                  {}
+            {}
           Update Interval: 0
           Value: true
       Enabled: true
@@ -234,7 +236,7 @@ Visualization Manager:
         - Alpha: 1
           Buffer Length: 1
           Class: rviz/Path
-          Color: 0; 255; 0
+          Color: 255; 85; 255
           Enabled: true
           Head Diameter: 0.300000012
           Head Length: 0.200000003
@@ -282,7 +284,7 @@ Visualization Manager:
           Marker Topic: /pose_graph/pose_graph
           Name: loop_visual
           Namespaces:
-            CameraPoseVisualization: true
+            {}
           Queue Size: 100
           Value: true
         - Class: rviz/MarkerArray
@@ -290,7 +292,7 @@ Visualization Manager:
           Marker Topic: /pose_graph/camera_pose_visual
           Name: camera_visual
           Namespaces:
-            CameraPoseVisualization: true
+            {}
           Queue Size: 100
           Value: true
         - Class: rviz/Image
@@ -306,17 +308,17 @@ Visualization Manager:
           Unreliable: false
           Value: true
         - Class: rviz/Marker
-          Enabled: true
+          Enabled: false
           Marker Topic: /pose_graph/key_odometrys
           Name: Marker
           Namespaces:
-            key_odometrys: true
+            {}
           Queue Size: 100
-          Value: true
+          Value: false
         - Alpha: 1
           Buffer Length: 1
           Class: rviz/Path
-          Color: 25; 255; 0
+          Color: 170; 85; 127
           Enabled: true
           Head Diameter: 0.300000012
           Head Length: 0.200000003
@@ -431,7 +433,7 @@ Visualization Manager:
         - Alpha: 1
           Buffer Length: 1
           Class: rviz/Path
-          Color: 25; 255; 0
+          Color: 255; 255; 255
           Enabled: true
           Head Diameter: 0.300000012
           Head Length: 0.200000003
@@ -453,11 +455,93 @@ Visualization Manager:
           Value: true
       Enabled: true
       Name: pose_graph
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        {}
+      Update Interval: 0
+      Value: true
+    - Angle Tolerance: 0.100000001
+      Class: rviz/Odometry
+      Covariance:
+        Orientation:
+          Alpha: 0.5
+          Color: 255; 255; 127
+          Color Style: Unique
+          Frame: Local
+          Offset: 1
+          Scale: 1
+          Value: true
+        Position:
+          Alpha: 0.300000012
+          Color: 204; 51; 204
+          Scale: 1
+          Value: true
+        Value: false
+      Enabled: true
+      Keep: 2000
+      Name: Odometry
+      Position Tolerance: 0.100000001
+      Shape:
+        Alpha: 1
+        Axes Length: 1
+        Axes Radius: 0.100000001
+        Color: 255; 25; 0
+        Head Length: 0.300000012
+        Head Radius: 0.100000001
+        Shaft Length: 1
+        Shaft Radius: 0.0500000007
+        Value: Arrow
+      Topic: /odometry/filtered_map
+      Unreliable: false
+      Value: true
+    - Angle Tolerance: 0.100000001
+      Class: rviz/Odometry
+      Covariance:
+        Orientation:
+          Alpha: 0.5
+          Color: 255; 255; 127
+          Color Style: Unique
+          Frame: Local
+          Offset: 1
+          Scale: 1
+          Value: true
+        Position:
+          Alpha: 0.300000012
+          Color: 204; 51; 204
+          Scale: 1
+          Value: true
+        Value: false
+      Enabled: true
+      Keep: 2000
+      Name: Odometry
+      Position Tolerance: 0.100000001
+      Shape:
+        Alpha: 1
+        Axes Length: 1
+        Axes Radius: 0.100000001
+        Color: 255; 255; 127
+        Head Length: 0.300000012
+        Head Radius: 0.100000001
+        Shaft Length: 1
+        Shaft Radius: 0.0500000007
+        Value: Arrow
+      Topic: /septentrio/odometry
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 0; 0; 0
     Default Light: true
-    Fixed Frame: world
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
@@ -476,25 +560,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 11.8658524
+      Distance: 6.8349185
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -2.7069304
-        Y: -1.26974416
-        Z: 2.1410624e-05
+        X: 0.91212666
+        Y: -0.711882114
+        Z: 2.49783116e-05
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.269796729
+      Pitch: 0.954796016
       Target Frame: <Fixed Frame>
       Value: XYOrbit (rviz)
-      Yaw: 4.27722549
+      Yaw: 4.85260344
     Saved: ~
 Window Geometry:
   Displays:

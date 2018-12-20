@@ -3,6 +3,7 @@
 #include <execinfo.h>
 #include <csignal>
 #include <cstdio>
+#include <cstdlib>
 #include <iostream>
 #include <queue>
 

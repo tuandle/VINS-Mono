@@ -44,7 +44,7 @@ extrinsicTranslation: !!opencv-matrix
    data: [-0.05927125, -0.00014721, 0.06667021]
 
 #feature traker paprameters
-max_cnt: 150             # max feature number in feature tracking
+max_cnt: 100             # max feature number in feature tracking
 min_dist: 20            # min distance between two features 
 freq: 20                # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image 
 F_threshold: 1.0        # ransac threshold (pixel)
@@ -68,7 +68,7 @@ g_norm: 9.75770672       # gravity magnitude
 loop_closure: 1                    # start loop closure
 fast_relocalization: 1             # useful in real-time and large project
 load_previous_pose_graph: 0        # load and reuse previous pose graph; load from 'pose_graph_save_path'
-pose_graph_save_path: "/home/tuan/vision_ws/src/VINS-Mono/output/saved_pose_graph/" # save and load path
+pose_graph_save_path: "/home/tuan/monocam_ws/src/VINS-Mono/output/saved_pose_graph/" # save and load path
 
 #unsynchronization parameters
 estimate_td: 0                      # online estimate time offset between camera and imu

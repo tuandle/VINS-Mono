@@ -21,4 +21,15 @@
         <param name="skip_dis" type="double" value="0" />
     </node>
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find vins_estimator)/../config/vins_rviz_config.rviz" output="screen" />
+    
+    <!-- <include file="$(find geodetic_utils)/launch/gps_to_pose_conversion.launch" />  
+        <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen">
+            <param name="target_frame_name" type="string" value="map" />
+            <param name="source_frame_name" type="string" value="" />
+            <param name="trajectory_update_rate" type="double" value="4" />
+            <param name="trajectory_publish_rate" type="double" value="0.25" />
+        </node>
+    -->
+
+    
 </launch>
